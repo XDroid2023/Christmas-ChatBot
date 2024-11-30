@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas Chatbot</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(to bottom, #1a472a, #0c3823);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .character-select {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .character-btn {
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            background: #c41e3a;
+            color: white;
+        }
+
+        .character-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .character-btn.active {
+            background: #8b0000;
+        }
+
+        .chat-container {
+            height: 400px;
+            overflow-y: auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .message {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 80%;
+        }
+
+        .user-message {
+            background: #1a5f3c;
+            margin-left: auto;
+        }
+
+        .bot-message {
+            background: #c41e3a;
+        }
+
+        .input-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        #user-input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .control-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background: #c41e3a;
+            color: white;
+            cursor: pointer;
+        }
+
+        .control-btn:hover {
+            background: #8b0000;
+        }
+
+        #voice-btn.listening {
+            background: #ff4444;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        #countdown {
+            text-align: center;
+            color: #ff0000;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align: center; color: #ff0000; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+            🎄 Christmas Chatbot 🎅
+        </h1>
+        
+        <div id="countdown">
+            Loading Christmas countdown...
+        </div>
+        
+        <div class="character-select">
+            <button class="character-btn" data-character="santa">
+                🎅 Talk to Santa
+            </button>
+            <button class="character-btn" data-character="elf">
+                🧝 Talk to Elf
+            </button>
+        </div>
+
+        <div class="chat-container" id="chat-container"></div>
+
+        <div class="input-container">
+            <input type="text" id="user-input" placeholder="Type your message...">
+            <button class="control-btn" id="send-btn">Send</button>
+            <button class="control-btn" id="voice-btn">🎤</button>
+        </div>
+    </div>
+    <script src="snow.js"></script>
+    <script src="chatbot.js"></script>
+</body>
+</html>
